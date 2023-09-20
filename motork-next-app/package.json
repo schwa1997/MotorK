@@ -19,6 +19,7 @@
     "autoprefixer": "10.4.15",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "material-ui-popup-state": "^5.0.9",
     "next": "13.4.19",
     "next-intl": "^2.20.0",
     "postcss": "8.4.30",

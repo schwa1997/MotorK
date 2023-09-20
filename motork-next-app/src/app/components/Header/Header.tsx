@@ -1,14 +1,31 @@
+"use client";
+
 import { FC } from "react";
 import motorkLogo from "../../assets/motork.svg";
 import Image from "next/image";
+import MenuPopupState from "./Dashboard";
 
 export const Header: FC = () => {
   return (
     <>
-      <div className="w-screen z-50 left-0 fixed h-20 top-0 pl-5 pt-5 bg-opacity-40">
-        <a href="/" target="_self" >
-          <Image priority={true} src={motorkLogo} className="h-10 w-auto" alt="logo" />
-        </a>
+      <div
+        className="fixed md:px-6 p-4 grid grid-cols-2 gap-4 place-content-between w-screen z-50 
+        bg-gradient-to-r from-red-500 via-black/50 to-white 
+        hover:bg-gradient-to-r hover:from-red-500  hover:to-red-500"
+      >
+        <div className="grid content-center">
+          <a href="/" target="_self">
+            <Image
+              priority={true}
+              src={motorkLogo}
+              className="md:h-10 h-5 w-auto "
+              alt="logo"
+            />
+          </a>
+        </div>
+        <div className="grid content-center place-items-end">
+          <MenuPopupState />
+        </div>
       </div>
     </>
   );

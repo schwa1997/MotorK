@@ -14,7 +14,7 @@ const CarCard: React.FC<CarCardProps> = ({ id, make, model, price }) => {
   return (
     <div className="p-4 md:w-72 w-screen">
       <Card
-        className=" bg-zinc-400/30 rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl"
+        className=" bg-gradient-to-r from-red-400/80 via-red-300/70 to-red-200/50 rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl"
         sx={{ minWidth: 275 }}
       >
         <CardContent>
@@ -27,8 +27,8 @@ const CarCard: React.FC<CarCardProps> = ({ id, make, model, price }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">
-            <a href={`/car/${id}`}>See more</a>
+          <Button size="small" className="hover:bg-red-600">
+            <a className="text-white" href={`/car/${id}`}>See more</a>
           </Button>
         </CardActions>
       </Card>

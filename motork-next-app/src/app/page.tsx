@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import data from "./data/data.json";
 import SearchIcon from "@mui/icons-material/Search";
 import ToggleButton from "@mui/material/ToggleButton";
@@ -10,50 +10,80 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Modal from "@mui/material/Modal";
-import { Button, Input } from "@mui/material";
-import { ArrowDownward } from "@mui/icons-material";
+import { Button, Input, Typography } from "@mui/material";
+import { ArrowDownward, Close } from "@mui/icons-material";
+
 
 export default function Home() {
-  const [cars, setCars] = useState(data.slice(0, 6)); 
-  const [group, setGroup] = useState(Math.ceil(data.length / 6) - 1); 
+  const [cars, setCars] = useState(data.slice(0, 6));
+  const [group, setGroup] = useState(Math.ceil(data.length / 6) - 1);
   const [search, setSearch] = useState(false);
-  const [searchOption, setSearchOption] = useState("0"); 
+  const [open, setOpen] = useState(false);
+  const [searchOption, setSearchOption] = useState("0");
+  const [searchedCars, setSearchedCars] = useState([]);
   const [selectedCars, setSelectedCars] = useState([]);
-  const handleClose = () => setSearch(!search);
-
+  const [selectGroup, setSelectGroup] = useState(
+    Math.ceil(selectedCars.length / 6) - 1
+  );
+  const handleSearchToggle = () => {
+    setSearch(!search);
+  };
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const handleLoadMore = () => {
     const newData = data.slice(cars.length, cars.length + 6);
     setGroup(group - 1);
     setCars((prevCars) => prevCars.concat(newData));
   };
-
+  const handleSelectLoadMore = () => {
+    const newData = searchedCars.slice(cars.length, cars.length + 6);
+    setSelectGroup(selectGroup - 1);
+    setSelectedCars((prevCars) => prevCars.concat(newData));
+  };
 
   const handleSearchByMake = (e) => {
     // Filter cars based on the searchValue
-    const filteredCars = cars.filter((car) =>
+    const filteredCars = data.filter((car) =>
       searchOption === "0"
         ? car.make.toLowerCase().includes(e.toLowerCase())
         : car.model.toLowerCase().includes(e.toLowerCase())
     );
     setSearch(true);
-    setSelectedCars(filteredCars);
+    setSearchedCars(filteredCars);
+    setSelectedCars(filteredCars.slice(0, 6));
+    setSelectGroup(Math.ceil(filteredCars.length / 6) - 1);
   };
 
   return (
-    <div className="top-20 container pt-20 ">
-      <div className="fixed z-50 flex flex-col right-20">
-        <ToggleButton
-          value="check"
-          selected={search}
-          onChange={() => {
-            setSearch(!search);
-          }}
-        >
-          <SearchIcon />
-        </ToggleButton>
+    <div className="top-20 pt-20 h-fit">
+    
+      <div className="fixed z-50 flex flex-col gap-2 md:right-20 right-4">
+        {!search ? (
+          <ToggleButton
+            className="hover:bg-red-400"
+            value="check"
+            selected={search}
+            onClick={handleOpen}
+          >
+            <SearchIcon />
+          </ToggleButton>
+        ) : (
+          <ToggleButton
+            className="hover:bg-red-400"
+            value="check"
+            selected={search}
+            onClick={handleSearchToggle}
+          >
+            <Close />
+          </ToggleButton>
+        )}
         <Modal
-          className="fixed top-20 mx-auto p-6 h-fit border w-96 shadow-lg rounded-md bg-red-600 text-white"
-          open={search}
+          className="fixed z-50 top-40 mx-auto p-6 h-fit border w-96 shadow-lg rounded-md bg-gradient-to-r from-red-500  to-white text-white"
+          open={open}
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
@@ -86,19 +116,40 @@ export default function Home() {
             />
           </div>
         </Modal>
-        {group > 0 && (
-          <Button
-            variant="contained"
-            onClick={handleLoadMore}
-            endIcon={<ArrowDownward />}
-            className="w-20 h-20 text-black"
-          >
-            Load More 
-          </Button>
-        )}
+        {search
+          ? selectGroup > 0 && (
+              <Button
+              color="error"
+                variant="contained"
+                onClick={handleSelectLoadMore}
+                endIcon={<ArrowDownward />}
+                className="w-20 h-20 text-black hover:bg-red-400"
+              >
+                Load More
+              </Button>
+            )
+          : group > 0 && (
+              <Button
+              color="error"
+                variant="contained"
+                onClick={handleLoadMore}
+                endIcon={<ArrowDownward />}
+                className="w-20 h-20 text-black hover:bg-red-400"
+              >
+                Load More
+              </Button>
+            )}
       </div>
       <div className="w-full">
-        <div className="flex flex-wrap">
+        <div className="text-center h-fit p-4 flex flex-row justify-center">
+          <Typography
+            variant="h5"
+            className="w-fit rounded-xl py-4 md:px-48 px-10 bg-gradient-to-r from-red-500  to-zinc-800/50"
+          >
+            Car List
+          </Typography>
+        </div>
+        <div className="flex flex-wrap justify-center">
           {search
             ? selectedCars.map((item) => (
                 <CarCard
