@@ -13,7 +13,6 @@ import Modal from "@mui/material/Modal";
 import { Button, Input, Typography } from "@mui/material";
 import { ArrowDownward, Close } from "@mui/icons-material";
 
-
 export default function Home() {
   const [cars, setCars] = useState(data.slice(0, 6));
   const [group, setGroup] = useState(Math.ceil(data.length / 6) - 1);
@@ -59,8 +58,7 @@ export default function Home() {
   };
 
   return (
-    <div className="top-20 pt-20 h-fit">
-    
+    <div className="Z-50 top-20 pt-20 h-fit">
       <div className="fixed z-50 flex flex-col gap-2 md:right-20 right-4">
         {!search ? (
           <ToggleButton
@@ -119,7 +117,7 @@ export default function Home() {
         {search
           ? selectGroup > 0 && (
               <Button
-              color="error"
+                color="error"
                 variant="contained"
                 onClick={handleSelectLoadMore}
                 endIcon={<ArrowDownward />}
@@ -130,7 +128,7 @@ export default function Home() {
             )
           : group > 0 && (
               <Button
-              color="error"
+                color="error"
                 variant="contained"
                 onClick={handleLoadMore}
                 endIcon={<ArrowDownward />}

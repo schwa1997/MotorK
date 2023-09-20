@@ -5,7 +5,16 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import carLogo from "../../assets/car.svg";
-import { ArrowBack, EuroOutlined, ModeOutlined } from "@mui/icons-material";
+import {
+  ArrowBack,
+  DirectionsCar,
+  EuroOutlined,
+  LocalCarWash,
+  LocalOffer,
+  Tune,
+} from "@mui/icons-material";
+import DescriptionIcon from "@mui/icons-material/Description";
+import FeatureCard from "./Feature";
 
 interface CarCardProps {
   id: number;
@@ -26,66 +35,85 @@ const CarDetailCard: React.FC<CarCardProps> = ({
 }) => {
   return (
     <>
-      <div className="h-fit relative">
-        <div className="bg-white flex justify-center md:absolute md:w-full relative  h-full">
-          <Image priority={false} src={carLogo} className="md:w-2/3 md:h-fit  w-fit h-3/4 " alt="logo" />
+      <div className="flex md:flex-row flex-col md:p-2 p-1">
+        <div className="bg-white md:col-span-2">
+          <Image
+            priority={false}
+            src={carLogo}
+            className="w-full h-fit md:w-screen md:h-fit "
+            alt="logo"
+          />
         </div>
-        <div className="md:w-1/4 z-50 md:pt-24 pt-4 md:fixed md:left-3/4 md:top-0 md:h-screen left-0  w-screen relative h-fit shadow-red-600 text-black flex flex-col space-y-4 p-5">
+        <div className=" text-black p-3 flex flex-col gap-2">
           <Card
             sx={{
-              background: 'linear-gradient(to right, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.3) 50%, rgba(255, 0, 0, 0.1) 100%)',
+              background:
+                "linear-gradient(to right, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.3) 50%, rgba(255, 0, 0, 0.1) 100%)",
               ":hover": {
                 background: "rgba(239, 68, 68, 0.9)",
               },
             }}
-            className="flex-none h-fit "
           >
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+            <CardContent className="flex">
+              <LocalCarWash />
+              <Typography className="text-xl font-bold" component="div">
                 {make}
               </Typography>
             </CardContent>
           </Card>
           <Card
-             sx={{
-              background: 'linear-gradient(to right, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.3) 50%, rgba(255, 0, 0, 0.1) 100%)',
+            sx={{
+              background:
+                "linear-gradient(to right, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.3) 50%, rgba(255, 0, 0, 0.1) 100%)",
               ":hover": {
-                background: "rgba(239, 68, 68, 0.9)",
+                background: "rgba(239, 68, 68, 0.3)",
               },
             }}
-            className="grow h-fit"
+            className=""
           >
-            <CardContent>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {model}
-              </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                <EuroOutlined /> {price}
-              </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {description}
-              </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {features}
-              </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              Mileage: {mileage}
-              </Typography>
+            <CardContent className="grid gap-5">
+              <FeatureCard
+                icon={<LocalOffer />}
+                feature="Model"
+                value={model}
+              />
+
+              <FeatureCard
+                icon={<EuroOutlined />}
+                feature="Price"
+                value={price}
+              />
+              <FeatureCard
+                icon={<DescriptionIcon />}
+                feature="Description"
+                value={description}
+              />
+              <FeatureCard
+                icon={<Tune />}
+                feature="Features"
+                value={features}
+              />
+              <FeatureCard
+                icon={<DirectionsCar />}
+                feature="Mileage"
+                value={mileage}
+              />
             </CardContent>
           </Card>
           <Card
-             sx={{
-              background: 'linear-gradient(to right, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.3) 50%, rgba(255, 0, 0, 0.1) 100%)',
+            sx={{
+              background:
+                "linear-gradient(to right, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.3) 50%, rgba(255, 0, 0, 0.1) 100%)",
               ":hover": {
                 background: "rgba(239, 68, 68, 0.9)",
               },
             }}
-            className="flex-none h-fit"
           >
             <CardActions>
               <Button size="small">
                 <a href={`/`} className="text-white">
-                  <ArrowBack/> Car list</a>
+                  <ArrowBack /> Car list
+                </a>
               </Button>
             </CardActions>
           </Card>
