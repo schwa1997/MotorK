@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import data from "../../data/data.json";
 import CarDetailCard from "../../components/Card/CarDetailCard";
-import CircularIndeterminate from "@/app/components/Loading";
+import LoadingComponent from "@/app/components/Loading";
 import ErrorModal from "@/app/components/InfoModal";
 
 export default function CarDetail({ params }: { params: { id: string } }) {
@@ -24,32 +24,18 @@ export default function CarDetail({ params }: { params: { id: string } }) {
   useEffect(() => {
     // fetch data Asynchronously
     const fetchData = async () => {
-      const car = data.find((car) => car.id === parseInt(params.id));
-      if (car) {
-        setSelectedCar(car);
-      } else {
-        throw new Error("Error finding the data with ID");
+      try {
+        const car = data.find((car) => car.id === parseInt(params.id));
+        if (car) {
+          setSelectedCar(car);
+        } else {
+          setFailure(true)
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
       }
-      setLoading(false);
-      //TODO
-      //封装下search carlist 两种解决方法 1 根据make/modal 分别route / 2. zustand 全局数据
-      //修改error逻辑 使用NEXT JS 
-      //lOADING机制修改
-
-      // try {
-      //   const car = data.find((car) => car.id === parseInt(params.id));
-      //   if (car) {
-      //     setSelectedCar(car);
-      //   } else {
-      //     throw new Error("Error finding the data with ID")
-      //   }
-      //   setLoading(false);
-      // } catch (error) {
-      //   // catch error
-      //   console.error("Error fetching data:", error);
-      //   setLoading(false);
-      //   throw new Error("Error fetching data")
-      // }
     };
 
     fetchData();
@@ -59,7 +45,7 @@ export default function CarDetail({ params }: { params: { id: string } }) {
       {loading ? (
         //if not loading, show loading icon
         <div className="place-self-center">
-          <CircularIndeterminate />
+          <LoadingComponent />
         </div>
       ) : selectedCar ? (
         <CarDetailCard
@@ -77,9 +63,7 @@ export default function CarDetail({ params }: { params: { id: string } }) {
       {failure && (
         <ErrorModal
           header={"NO INFORMATION FOUND"}
-          body={
-            "There is no information found under this id. Please check the website link or car id"
-          }
+          body={"There is no information found under this id. Please check the website link or car id"}
         />
       )}
     </div>

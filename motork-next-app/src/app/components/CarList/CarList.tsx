@@ -17,6 +17,7 @@ type CarType = {
   features: string;
   mileage: number;
 };
+
 interface CarListProps {
   number: number;
 }
