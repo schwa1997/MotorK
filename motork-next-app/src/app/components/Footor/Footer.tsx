@@ -3,38 +3,40 @@
 import { FC } from "react";
 import motorkLogo from "../../assets/motork.svg";
 import Image from "next/image";
+import { Facebook, Instagram } from "@mui/icons-material";
 
 export const Footer: FC = () => {
   return (
     <>
-      <div
-        className="static bottom-0  h-32 grid grid-flow-col p-6 place-content-between
-        bg-gradient-to-r from-red-500 via-black/50 to-white 
-        hover:bg-gradient-to-r hover:from-red-500  hover:to-red-500"
-      >
-        <div className="flex flex-col pl-20">
-          <div className="flex flex-row">
-            <div className="w-20">HELP</div>
-            <div className="w-20">HELP</div>
-            <div className="w-20">HELP</div>
+      <div className="staic max-h-48 bottom-0 bg-black text-white flex md:flex-row flex-col md:px-12 px-6">
+        <div className="basis-5/6 md:py-12 py-2 grid grid-cols-3">
+          <div className="">
+            <div className="font-bold">CONTACT</div>
+            <div>
+              <Facebook />
+            </div>
+            <div>
+              <Instagram />
+            </div>
           </div>
-          <div className="flex flex-row">
-            <div className="w-20">HELP</div>
-            <div className="w-20">HELP</div>
-            <div className="w-20">HELP</div>
+          <div className="">
+            <div className="font-bold">PRODUCTS</div>
+            <div>SOLUTION</div>
+            <div>CASE</div>
           </div>
-          <div className="flex flex-row">
-            <div className="w-20">HELP</div>
-            <div className="w-20">HELP</div>
-            <div className="w-20">HELP</div>
+          <div className="">
+            <div className="font-bold">INFORMATION</div>
+            <div>CAREER</div>
+            <div>BUSINESS</div>
           </div>
+          <div className="mt-6">@2023</div>
         </div>
-        <div className=" place-self-end">
+        <div className="basis-1/6 place-self-end md:h-fit h-10 w-1/2">
           <a href="/" target="_self">
             <Image
               priority={true}
               src={motorkLogo}
-              className="md:h-10 h-5 w-auto "
+              className="w-full "
               alt="logo"
             />
           </a>

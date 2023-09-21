@@ -15,7 +15,7 @@ export default function CarDetail({ params }: { params: { id: number } }) {
   };
 
   return (
-    <div className="pt-20">
+    <div className="pt-20 px-5 min-h-[calc(100vh-12rem)]">
       {Object.keys(selectedCar).length > 0 ? (
         <CarDetailCard
           id={selectedCar.id}

@@ -35,8 +35,8 @@ const CarDetailCard: React.FC<CarCardProps> = ({
 }) => {
   return (
     <>
-      <div className="flex md:flex-row flex-col md:p-2 p-1">
-        <div className="bg-white md:col-span-2">
+      <div className="flex md:flex-row flex-col md:p-1 p-0">
+        <div className="bg-white md:col-span-2 p-10">
           <Image
             priority={false}
             src={carLogo}
@@ -44,8 +44,9 @@ const CarDetailCard: React.FC<CarCardProps> = ({
             alt="logo"
           />
         </div>
-        <div className=" text-black p-3 flex flex-col gap-2">
+        <div className=" text-black p-3 flex flex-col gap-4 min-w-[calc(30vw)]  ">
           <Card
+            className="transform transition-all hover:-translate-y-2 duration-300"
             sx={{
               background:
                 "linear-gradient(to right, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.3) 50%, rgba(255, 0, 0, 0.1) 100%)",
@@ -62,6 +63,7 @@ const CarDetailCard: React.FC<CarCardProps> = ({
             </CardContent>
           </Card>
           <Card
+            className="transform transition-all hover:-translate-y-2 duration-300"
             sx={{
               background:
                 "linear-gradient(to right, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.3) 50%, rgba(255, 0, 0, 0.1) 100%)",
@@ -69,7 +71,6 @@ const CarDetailCard: React.FC<CarCardProps> = ({
                 background: "rgba(239, 68, 68, 0.3)",
               },
             }}
-            className=""
           >
             <CardContent className="grid gap-5">
               <FeatureCard
@@ -101,6 +102,7 @@ const CarDetailCard: React.FC<CarCardProps> = ({
             </CardContent>
           </Card>
           <Card
+            className="transform transition-all hover:-translate-y-2 duration-300"
             sx={{
               background:
                 "linear-gradient(to right, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.3) 50%, rgba(255, 0, 0, 0.1) 100%)",
