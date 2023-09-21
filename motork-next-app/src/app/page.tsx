@@ -11,8 +11,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Modal from "@mui/material/Modal";
 import { Button, Input, Typography } from "@mui/material";
-import { ArrowDownward, Close } from "@mui/icons-material";
-
+import { ArrowDownward, Close, ListAlt } from "@mui/icons-material";
 
 export default function Home() {
   const [cars, setCars] = useState(data.slice(0, 6));
@@ -59,95 +58,94 @@ export default function Home() {
   };
 
   return (
-    <div className="top-20 pt-20 h-fit">
-    
-      <div className="fixed z-50 flex flex-col gap-2 md:right-20 right-4">
-        {!search ? (
-          <ToggleButton
-            className="hover:bg-red-400"
-            value="check"
-            selected={search}
-            onClick={handleOpen}
-          >
-            <SearchIcon />
-          </ToggleButton>
-        ) : (
-          <ToggleButton
-            className="hover:bg-red-400"
-            value="check"
-            selected={search}
-            onClick={handleSearchToggle}
-          >
-            <Close />
-          </ToggleButton>
-        )}
-        <Modal
-          className="fixed z-50 top-40 mx-auto p-6 h-fit border w-96 shadow-lg rounded-md bg-gradient-to-r from-red-500  to-white text-white"
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <div className="text-white">
-            <FormControl component="fieldset">
-              <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                value={searchOption} // Set the default value
-                name="radio-buttons-group"
-                onChange={(e) => setSearchOption(e.target.value)} // Update searchOption
-              >
-                <FormControlLabel
-                  value="0"
-                  control={<Radio />}
-                  label="Search by Make"
-                />
-                <FormControlLabel
-                  value="1"
-                  control={<Radio />}
-                  label="Search by Model"
-                />
-              </RadioGroup>
-            </FormControl>
-            <Input
-              onChange={(e) => handleSearchByMake(e.target.value)}
-              placeholder={
-                searchOption === "0" ? "Search by Make" : "Search by Model"
-              }
-            />
-          </div>
-        </Modal>
-        {search
-          ? selectGroup > 0 && (
-              <Button
-              color="error"
-                variant="contained"
-                onClick={handleSelectLoadMore}
-                endIcon={<ArrowDownward />}
-                className="w-20 h-20 text-black hover:bg-red-400"
-              >
-                Load More
-              </Button>
-            )
-          : group > 0 && (
-              <Button
-              color="error"
-                variant="contained"
-                onClick={handleLoadMore}
-                endIcon={<ArrowDownward />}
-                className="w-20 h-20 text-black hover:bg-red-400"
-              >
-                Load More
-              </Button>
-            )}
-      </div>
+    <div className="Z-50 top-20 pt-20 h-fit min-h-[calc(100vh-12rem)]">
       <div className="w-full">
-        <div className="text-center h-fit p-4 flex flex-row justify-center">
-          <Typography
-            variant="h5"
-            className="w-fit rounded-xl py-4 md:px-48 px-10 bg-gradient-to-r from-red-500  to-zinc-800/50"
-          >
-            Car List
-          </Typography>
+        <div className="text-center rounded-xl px-10 flex flex-col pb-2 border-b-2">
+          <div className="">
+            <Typography variant="h5" className="font-bold">
+              CAR LIST
+            </Typography>
+          </div>
+          <div className="place-self-end flex flex-row h-10 gap-2">
+            {!search ? (
+              <ToggleButton
+                className="hover:bg-red-400"
+                value="check"
+                selected={search}
+                onClick={handleOpen}
+              >
+                <SearchIcon />
+              </ToggleButton>
+            ) : (
+              <ToggleButton
+                className="hover:bg-red-400"
+                value="check"
+                selected={search}
+                onClick={handleSearchToggle}
+              >
+                <Close />
+              </ToggleButton>
+            )}
+            <Modal
+              className="fixed z-50 top-40 mx-auto p-6 h-fit border w-96 shadow-lg rounded-md bg-gradient-to-r from-red-500  to-white text-white"
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <div className="text-white">
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    value={searchOption} // Set the default value
+                    name="radio-buttons-group"
+                    onChange={(e) => setSearchOption(e.target.value)} // Update searchOption
+                  >
+                    <FormControlLabel
+                      value="0"
+                      control={<Radio />}
+                      label="Search by Make"
+                    />
+                    <FormControlLabel
+                      value="1"
+                      control={<Radio />}
+                      label="Search by Model"
+                    />
+                  </RadioGroup>
+                </FormControl>
+                <Input
+                  className="text-white"
+                  onChange={(e) => handleSearchByMake(e.target.value)}
+                  placeholder={
+                    searchOption === "0" ? "Search by Make" : "Search by Model"
+                  }
+                />
+              </div>
+            </Modal>
+            {search
+              ? selectGroup > 0 && (
+                  <Button
+                    color="error"
+                    variant="contained"
+                    onClick={handleSelectLoadMore}
+                    endIcon={<ArrowDownward />}
+                    className=" text-black hover:bg-red-400"
+                  >
+                    Load More
+                  </Button>
+                )
+              : group > 0 && (
+                  <Button
+                    color="error"
+                    variant="contained"
+                    onClick={handleLoadMore}
+                    endIcon={<ArrowDownward />}
+                    className=" text-black hover:bg-red-400"
+                  >
+                    Load More
+                  </Button>
+                )}
+          </div>
         </div>
         <div className="flex flex-wrap justify-center">
           {search
