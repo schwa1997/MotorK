@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useStore from "../../store";
 import data from "../../data/data.json";
 
-type CarCardProps = {
+type CarType = {
   id: number;
   make: string;
   model: string;
@@ -26,10 +26,16 @@ type CarCardProps = {
 };
 
 export default function SearchBar() {
-  const { carData, setCarData } = useStore();
-  const { search, setSearch } = useStore();
-  const { searchOption, setSearchOption } = useStore();
-  const { searchText, setSearchText } = useStore();
+  const {
+    carData,
+    setCarData,
+    search,
+    setSearch,
+    searchOption,
+    setSearchOption,
+    setSearchText,
+  } = useStore();
+
   const handleSearchToggle = () => {
     setSearch(!search);
   };
@@ -37,7 +43,7 @@ export default function SearchBar() {
     setSearchText(e);
     console.log(e);
     if (search) {
-      const filteredCars = data.filter((car: CarCardProps) =>
+      const filteredCars = data.filter((car: CarType) =>
         searchOption === "0"
           ? car.make.toLowerCase().includes(e.toLowerCase())
           : car.model.toLowerCase().includes(e.toLowerCase())
