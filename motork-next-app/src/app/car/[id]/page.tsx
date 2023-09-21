@@ -1,7 +1,7 @@
 "use client";
 
 import data from "../../data/data.json";
-import CarDetailCard from "../../components/ItemCard/CarDetailCard";
+import CarDetailCard from "../../components/Card/CarDetailCard";
 
 export default function CarDetail({ params }: { params: { id: string } }) {
   const selectedCar = data.find((car) => car.id === parseInt(params.id)) || {

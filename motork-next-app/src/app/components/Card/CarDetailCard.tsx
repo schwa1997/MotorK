@@ -14,7 +14,7 @@ import {
   Tune,
 } from "@mui/icons-material";
 import DescriptionIcon from "@mui/icons-material/Description";
-import FeatureCard from "./Feature";
+import FeatureCard from "./FeatureCard";
 
 interface CarCardProps {
   id: number;
