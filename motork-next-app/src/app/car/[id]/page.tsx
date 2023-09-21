@@ -3,7 +3,7 @@
 import data from "../../data/data.json";
 import CarDetailCard from "../../components/ItemCard/CarDetailCard";
 
-export default function CarDetail({ params }: { params: { id: number } }) {
+export default function CarDetail({ params }: { params: { id: string } }) {
   const selectedCar = data.find((car) => car.id === parseInt(params.id)) || {
     id: 0,
     make: "",

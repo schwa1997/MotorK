@@ -11,7 +11,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Modal from "@mui/material/Modal";
 import { Button, Input, Typography } from "@mui/material";
-import { ArrowDownward, Close, ListAlt } from "@mui/icons-material";
+import { ArrowDownward, Close } from "@mui/icons-material";
 
 export default function Home() {
   const [cars, setCars] = useState(data.slice(0, 6));
@@ -19,8 +19,29 @@ export default function Home() {
   const [search, setSearch] = useState(false);
   const [open, setOpen] = useState(false);
   const [searchOption, setSearchOption] = useState("0");
-  const [searchedCars, setSearchedCars] = useState([]);
-  const [selectedCars, setSelectedCars] = useState([]);
+  const [searchedCars, setSearchedCars] = useState<
+    {
+      id: number;
+      make: string;
+      model: string;
+      price: number;
+      description: string;
+      features: string;
+      mileage: number;
+    }[]
+  >([]);
+
+  const [selectedCars, setSelectedCars] = useState<
+    {
+      id: number;
+      make: string;
+      model: string;
+      price: number;
+      description: string;
+      features: string;
+      mileage: number;
+    }[]
+  >([]);
   const [selectGroup, setSelectGroup] = useState(
     Math.ceil(selectedCars.length / 6) - 1
   );
@@ -44,7 +65,7 @@ export default function Home() {
     setSelectedCars((prevCars) => prevCars.concat(newData));
   };
 
-  const handleSearchByMake = (e) => {
+  const handleSearchByMake = (e:any) => {
     // Filter cars based on the searchValue
     const filteredCars = data.filter((car) =>
       searchOption === "0"
@@ -66,7 +87,7 @@ export default function Home() {
               CAR LIST
             </Typography>
           </div>
-          <div className="place-self-end flex flex-row h-10 gap-2">
+          <div className="md:place-self-end place-self-center flex flex-row md:h-10 h-6 gap-2">
             {!search ? (
               <ToggleButton
                 className="hover:bg-red-400"
@@ -147,7 +168,7 @@ export default function Home() {
                 )}
           </div>
         </div>
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-center md:gap-6 gap-0">
           {search
             ? selectedCars.map((item) => (
                 <CarCard

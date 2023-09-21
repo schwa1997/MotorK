@@ -20,7 +20,7 @@ interface CarCardProps {
   id: number;
   make: string;
   model: string;
-  price: string;
+  price: number;
   description: string;
   features: string;
   mileage: number;
@@ -44,10 +44,11 @@ const CarDetailCard: React.FC<CarCardProps> = ({
             alt="logo"
           />
         </div>
-        <div className=" text-black p-3 flex flex-col gap-4 min-w-[calc(30vw)]  ">
+        <div className=" text-black p-3 flex flex-col gap-4 md:min-w-[calc(30vw)] min-w-[calc(90vw)] ">
           <Card
             className="transform transition-all hover:-translate-y-2 duration-300"
             sx={{
+              paddingBottom: "0px",
               background:
                 "linear-gradient(to right, rgba(255, 0, 0, 0.5) 0%, rgba(255, 0, 0, 0.3) 50%, rgba(255, 0, 0, 0.1) 100%)",
               ":hover": {
@@ -55,12 +56,12 @@ const CarDetailCard: React.FC<CarCardProps> = ({
               },
             }}
           >
-            <CardContent className="flex">
+            <div className="px-4 py-2 flex gap-2">
               <LocalCarWash />
               <Typography className="text-xl font-bold" component="div">
                 {make}
               </Typography>
-            </CardContent>
+            </div>
           </Card>
           <Card
             className="transform transition-all hover:-translate-y-2 duration-300"
