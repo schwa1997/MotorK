@@ -64,7 +64,7 @@ export default function CarDetail({ params }: { params: { id: string } }) {
       {failure && (
         <ErrorModal
           header={"NO INFORMATION FOUND"}
-          body={"THERE  IS NO INFORMATION FOUND UNDER THIS ID"}
+          body={"There is no information found under this id. Please check the website link or car id1"}
         />
       )}
     </div>
