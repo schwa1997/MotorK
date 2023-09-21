@@ -10,7 +10,7 @@ export const Footer: FC = () => {
     <>
       <div className="staic max-h-fit bottom-0 bg-black text-white uppercase  flex md:flex-row flex-col md:px-12 px-6">
         <div className="basis-5/6 md:py-12 py-2 grid grid-cols-3">
-          <div >
+          <div>
             <div className="font-bold">contact</div>
             <div>
               <Facebook />
@@ -19,7 +19,7 @@ export const Footer: FC = () => {
               <Instagram />
             </div>
           </div>
-          <div >
+          <div>
             <div className="font-bold">PRODUCTS</div>
             <div>SOLUTION</div>
             <div>CASE</div>
