@@ -11,7 +11,7 @@ interface CarCardProps {
   id: number;
   make: string;
   model: string;
-  price: string;
+  price: number;
 }
 const CarCard: React.FC<CarCardProps> = ({ id, make, model, price }) => {
   return (
@@ -19,7 +19,7 @@ const CarCard: React.FC<CarCardProps> = ({ id, make, model, price }) => {
       <Card
         className=" bg-gradient-to-r from-red-400/60 via-red-200/70 to-red-100/50 hover:from-red-400
         rounded-3xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl"
-        sx={{ minWidth: 275 }}
+        sx={{ minWidth: 275, maxWidth:1000 }}
       >
         <CardContent>
           <Image
@@ -29,9 +29,9 @@ const CarCard: React.FC<CarCardProps> = ({ id, make, model, price }) => {
             alt="logo"
           />
           <Typography className="font-bold text-lg text-red-700 ">{make}</Typography>
-          <Typography className="text-red-600 pb-4">MODEL: {model}</Typography>
-          <div className="grid grid-cols-2 content-center">
-            <Typography className="text-red-800 grid content-center">
+          <Typography className="text-red-600 pb-4"> {model}</Typography>
+          <div className="grid grid-cols-2 content-center ">
+            <Typography className="text-red-800 grid content-center ">
               <EuroRounded />
               {price}
             </Typography>
