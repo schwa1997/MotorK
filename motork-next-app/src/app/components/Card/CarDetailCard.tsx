@@ -15,17 +15,9 @@ import {
 } from "@mui/icons-material";
 import DescriptionIcon from "@mui/icons-material/Description";
 import FeatureCard from "./FeatureCard";
+import { CarType } from "@/app/types";
 
-interface CarCardProps {
-  id: number;
-  make: string;
-  model: string;
-  price: number;
-  description: string;
-  features: string;
-  mileage: number;
-}
-const CarDetailCard: React.FC<CarCardProps> = ({
+const CarDetailCard: React.FC<CarType> = ({
   make,
   model,
   price,

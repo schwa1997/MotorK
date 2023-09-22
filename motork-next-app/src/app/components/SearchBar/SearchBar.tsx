@@ -14,16 +14,7 @@ import { red } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useStore from "../../store";
 import data from "../../data/data.json";
-
-type CarType = {
-  id: number;
-  make: string;
-  model: string;
-  price: number;
-  description: string;
-  features: string;
-  mileage: number;
-};
+import { CarType } from "@/app/types";
 
 export default function SearchBar() {
   const {

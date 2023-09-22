@@ -6,14 +6,9 @@ import Typography from "@mui/material/Typography";
 import { EuroRounded } from "@mui/icons-material";
 import Image from "next/image";
 import carLogo from "../../assets/car.svg";
+import { CarType } from "@/app/types";
 
-interface CarCardProps {
-  id: number;
-  make: string;
-  model: string;
-  price: number;
-}
-const CarCard: React.FC<CarCardProps> = ({ id, make, model, price }) => {
+const CarCard: React.FC<CarType> = ({ id, make, model, price }) => {
   return (
     <div className="p-4 md:w-72 w-screen">
       <Card
