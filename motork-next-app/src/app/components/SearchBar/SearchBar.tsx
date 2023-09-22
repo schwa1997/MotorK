@@ -14,20 +14,10 @@ import { red } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useStore from "../../store";
 import data from "../../data/data.json";
-
-type CarType = {
-  id: number;
-  make: string;
-  model: string;
-  price: number;
-  description: string;
-  features: string;
-  mileage: number;
-};
+import { CarType } from "@/app/types";
 
 export default function SearchBar() {
   const {
-    carData,
     setCarData,
     search,
     setSearch,
@@ -41,7 +31,6 @@ export default function SearchBar() {
   };
   const handleSearchChange = (e: string) => {
     setSearchText(e);
-    console.log(e);
     if (search) {
       const filteredCars = data.filter((car: CarType) =>
         searchOption === "0"
@@ -49,21 +38,12 @@ export default function SearchBar() {
           : car.model.toLowerCase().includes(e.toLowerCase())
       );
       setCarData(filteredCars);
-      console.log(carData, filteredCars);
     } else {
       setCarData(data);
     }
   };
   const handleSearchOption = (e: string) => {
     setSearchOption(e);
-  };
-
-  const handleSearch = (
-    searchText: string,
-    searchOption: string,
-    search: boolean
-  ) => {
-    console.log(searchText, searchOption, search);
   };
 
   const theme = createTheme({
@@ -74,7 +54,7 @@ export default function SearchBar() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="h-fit">
+      <div className="h-fit text-lg">
         {search && (
           <>
             <Input
@@ -102,6 +82,9 @@ export default function SearchBar() {
                   label="Search by Make"
                 />
                 <FormControlLabel
+                  sx={{
+                    typography: "body1",
+                  }}
                   value="1"
                   control={<Radio color="primary" />}
                   label="Search by Model"
@@ -112,7 +95,7 @@ export default function SearchBar() {
         )}
         <ToggleButton
           color="primary"
-          className="hover:bgF-red-400"
+          className="hover:bg-red-400 md:p-2 p-1"
           value="check"
           selected={search}
           onClick={handleSearchToggle}

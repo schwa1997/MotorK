@@ -7,23 +7,14 @@ import { red } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CarCard from "../Card/CarListCard";
 import useStore from "../../store";
-
-type CarType = {
-  id: number;
-  make: string;
-  model: string;
-  price: number;
-  description: string;
-  features: string;
-  mileage: number;
-};
+import { CarType } from "@/app/types";
 
 interface CarListProps {
   number: number;
 }
 const CarList: React.FC<CarListProps> = ({ number }) => {
   const { carData, searchText } = useStore();
-  const [group, setGroup] = useState(Math.ceil(carData.length / 6) - 1);
+  const [group, setGroup] = useState(Math.ceil(carData.length / number) - 1);
   const [cars, setCars] = useState(carData.slice(0, number));
   const theme = createTheme({
     palette: {
@@ -31,13 +22,13 @@ const CarList: React.FC<CarListProps> = ({ number }) => {
     },
   });
   const handleLoadMore = () => {
-    const newData = carData.slice(cars.length, cars.length + 6);
+    const newData = carData.slice(cars.length, cars.length + number);
     setGroup(group - 1);
-    setCars((prevCars:CarType[]) => prevCars.concat(newData));
+    setCars((prevCars: CarType[]) => prevCars.concat(newData));
   };
   useEffect(() => {
     setCars(carData.slice(0, number));
-    setGroup(Math.ceil(carData.length / 6) - 1)
+    setGroup(Math.ceil(carData.length / number) - 1);
   }, [searchText, carData]);
 
   return (
@@ -51,6 +42,9 @@ const CarList: React.FC<CarListProps> = ({ number }) => {
               make={item.make}
               model={item.model}
               price={item.price}
+              description={item.description}
+              features={item.features}
+              mileage={item.mileage}
             ></CarCard>
           ))}
         </div>

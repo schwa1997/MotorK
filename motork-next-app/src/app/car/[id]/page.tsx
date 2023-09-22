@@ -8,7 +8,7 @@ import ErrorModal from "@/app/components/InfoModal";
 
 export default function CarDetail({ params }: { params: { id: string } }) {
   const [selectedCar, setSelectedCar] = useState(
-    null || {
+    null !== null ? null : {
       id: 0,
       make: "",
       model: "",
@@ -18,6 +18,7 @@ export default function CarDetail({ params }: { params: { id: string } }) {
       mileage: 0,
     }
   );
+  
   const [loading, setLoading] = useState(true);
   const [failure, setFailure] = useState(false);
 
