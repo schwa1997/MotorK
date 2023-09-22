@@ -1,3 +1,5 @@
+
+
 import SearchBar from "./components/SearchBar/SearchBar";
 import { Typography } from "@mui/material";
 import CarList from "./components/CarList/CarList";
@@ -10,7 +12,7 @@ export default function Home() {
         <Typography variant="h5" className="font-bold uppercase">
           car list 
         </Typography>
-        <div className="md:place-self-end place-self-center ">
+        <div className="md:place-self-end place-self-center   ">
           <SearchBar />
         </div>
       </div>
