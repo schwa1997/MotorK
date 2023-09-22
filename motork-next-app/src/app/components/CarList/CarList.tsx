@@ -14,7 +14,7 @@ interface CarListProps {
 }
 const CarList: React.FC<CarListProps> = ({ number }) => {
   const { carData, searchText } = useStore();
-  const [group, setGroup] = useState(Math.ceil(carData.length / 6) - 1);
+  const [group, setGroup] = useState(Math.ceil(carData.length / number) - 1);
   const [cars, setCars] = useState(carData.slice(0, number));
   const theme = createTheme({
     palette: {
@@ -22,13 +22,13 @@ const CarList: React.FC<CarListProps> = ({ number }) => {
     },
   });
   const handleLoadMore = () => {
-    const newData = carData.slice(cars.length, cars.length + 6);
+    const newData = carData.slice(cars.length, cars.length + number);
     setGroup(group - 1);
     setCars((prevCars: CarType[]) => prevCars.concat(newData));
   };
   useEffect(() => {
     setCars(carData.slice(0, number));
-    setGroup(Math.ceil(carData.length / 6) - 1);
+    setGroup(Math.ceil(carData.length / number) - 1);
   }, [searchText, carData]);
 
   return (
