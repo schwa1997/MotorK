@@ -7,7 +7,7 @@ import { Footer } from "./components/Footor/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Motork",
+  title: "Demo",
   description: "Designed by Huimin Chen",
 };
 
@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

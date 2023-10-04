@@ -14,21 +14,17 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Details
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project is built for: Front-End Engineering Internship Test: Automotive Commerce App
 
-## Learn More
+#### Goal
+Build a simple front-end application that lists car models available for sale, allowing users to
+search for specific models, and view details of each model.
 
-To learn more about Next.js, take a look at the following resources:
+#### Features
+1. A List: Display a list of car models with basic details like make, model, price.
+2. A Search Bar: Enable users to search for cars by make or model.
+3. A Detail Page: Clicking on a car should open a detail page with more information like
+description, features, mileage.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

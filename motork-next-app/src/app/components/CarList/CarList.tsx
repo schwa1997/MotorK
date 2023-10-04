@@ -12,6 +12,7 @@ import { CarType } from "@/app/types";
 interface CarListProps {
   number: number;
 }
+
 const CarList: React.FC<CarListProps> = ({ number }) => {
   const { carData, searchText } = useStore();
   const [group, setGroup] = useState(Math.ceil(carData.length / number) - 1);

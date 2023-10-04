@@ -8,7 +8,7 @@ import Image from "next/image";
 import carLogo from "../../assets/car.svg";
 import { CarType } from "@/app/types";
 
-const CarCard: React.FC<CarType> = ({ id, make, model, price }) => {
+const CarListCard: React.FC<CarType> = ({ id, make, model, price }) => {
   return (
     <div className="p-4 md:w-72 w-screen">
       <Card
@@ -44,4 +44,4 @@ const CarCard: React.FC<CarType> = ({ id, make, model, price }) => {
   );
 };
 
-export default CarCard;
+export default CarListCard;

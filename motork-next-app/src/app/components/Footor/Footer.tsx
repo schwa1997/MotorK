@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import motorkLogo from "../../assets/motork.svg";
+import logoLogo from "../../assets/logo.svg";
 import Image from "next/image";
 import { Facebook, Instagram } from "@mui/icons-material";
 
@@ -35,7 +35,7 @@ export const Footer: FC = () => {
           <a href="/" target="_self">
             <Image
               priority={true}
-              src={motorkLogo}
+              src={logoLogo}
               className="w-full "
               alt="logo"
             />

@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import motorkLogo from "../../assets/motork.svg";
+import logoLogo from "../../assets/logo.svg";
 import Image from "next/image";
 import MenuPopupState from "./MenuPopup";
 
@@ -18,7 +18,7 @@ export const Header: FC = () => {
           <a href="/" target="_self">
             <Image
               priority={true}
-              src={motorkLogo}
+              src={logoLogo}
               className="md:h-10 h-5 w-auto "
               alt="logo"
             />
