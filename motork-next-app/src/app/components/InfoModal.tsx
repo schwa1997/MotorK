@@ -1,30 +1,27 @@
-import * as React from 'react';
-import Backdrop from '@mui/material/Backdrop';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Fade from '@mui/material/Fade';
-import Typography from '@mui/material/Typography';
+import * as React from "react";
+import Backdrop from "@mui/material/Backdrop";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+import Typography from "@mui/material/Typography";
 
 const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
-interface ErrorProps{
-    header:string,
-    body:string
+interface ErrorProps {
+  header: string;
+  body: string;
 }
-const ErrorModal: React.FC<ErrorProps> = ({
-    header,
-    body,
-  }) => {
+const ErrorModal: React.FC<ErrorProps> = ({ header, body }) => {
   const [open, setOpen] = React.useState(true);
   const handleClose = () => setOpen(false);
 
@@ -56,6 +53,6 @@ const ErrorModal: React.FC<ErrorProps> = ({
       </Modal>
     </div>
   );
-}
+};
 
-export default ErrorModal
+export default ErrorModal;
